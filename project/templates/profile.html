@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="position-relative overflow-hidden p-3 m-md-3 text-center">
+	<div class="col-md-5 p-lg-5 mx-auto my-5">
+		<h1>Bienvenido, {{name}}!</h1>
+		{% for message in get_flashed_messages() %}
+		<p>{{ message }}</p>
+		{% endfor %}
+	</div>
+
+	<div class="row justify-content-md-center">
+		<div class="col-lg-4">
+			<div class="card" style="background-color: #14595B !important; color: white !important;">
+				<div class="card-body">
+					<h3 class="card-title">Tu Empresa</h3>
+					<br>
+					<form method="POST" action="/update_company">
+						<div class="form-group">
+							<input class="form-control" type="text" name="business_name" value={{ business_name }}>
+						</div>
+						<div class="form-group">
+							<input class="form-control" type="text" name="business_address" value={{ business_address }}>
+						</div>
+						<div class="form-group">
+							<input class="form-control" type="text" name="phone_number" value={{ phone_number }}>
+						</div>
+						<div class="form-group">
+							<input class="form-control" type="text" name="business_email" value={{ business_email }}>
+						</div>
+						<div class="form-group">
+							<select class="form-control" name="business_sector">
+								<option selected value="">Area de Servicio</option>
+								{% for service in services %}
+								<option value="{{service}}">{{service}}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<div class="form-group">
+							<input class="form-control" type="text" name="business_description" value={{ business_description }}>
+						</div>
+
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary" style="margin-top: 10px;">
+								Actualizar
+							</button>
+						</div>
+				</form>
+			</div>
+			<br>
+		</div>
+	</div>
+</div>
+</div>
+
+{% endblock %}
