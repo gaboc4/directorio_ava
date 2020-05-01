@@ -14,14 +14,33 @@
 
 
 	<div class="row justify-content-md-center">
-		<div class="col col-lg-4">
-			<div class="card" style="background-color: #14595B !important; color: white !important;">
-				<div class="card-body">
-					<h3 class="card-title">Sobre Este Directorio</h3>
-					<br>
-					<p>Aqui uno puede encontrar diferentes empresas con deuños Venezolanos en Austin, TX</p>
-				</div>
-			</div>
+		<div class="col col-lg-6">
+			<table class="table table-striped">
+				<thead>
+				<tr>
+					<th scope="col">Nombre</th>
+					<th scope="col">Dueño</th>
+					<th scope="col">Direccion</th>
+					<th scope="col">Numero de Telefono</th>
+					<th scope="col">Correo Electronico</th>
+					<th scope="col">Area de Servicio</th>
+					<th scope="col">Descripcion</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for b in businesses %}
+					<tr>
+						<th scope="row">{{b.name}}</th>
+						<td>{{b.owner}}</td>
+						<td>{{b.address}}</td>
+						<td>{{b.phone_number}}</td>
+						<td>{{b.business_email}}</td>
+						<td>{{b.sector}}</td>
+						<td>{{b.description}}</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
 		</div>
 
 	</div>

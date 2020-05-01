@@ -21,7 +21,21 @@ services = ['Alquiler de vivienda', 'Compra de vivienda', 'Plomeria',
 @main.route('/')
 @main.route('/index')
 def index():
-	return render_template('index.html')
+	businesses = Business.query.all()
+	businesses_list = []
+	for b in businesses:
+		business_dict = {}
+		owner = Users.query.filter_by(id=b.owner_id).first()
+		business_dict['name'] = b.name
+		business_dict['owner'] = owner.first_name + ' ' + owner.last_name
+		business_dict['business_email'] = b.business_email
+		business_dict['phone_number'] = b.phone_number
+		business_dict['sector'] = b.sector
+		business_dict['address'] = b.address
+		business_dict['description'] = b.description
+		businesses_list.append(business_dict)
+
+	return render_template('index.html', businesses=businesses_list)
 
 
 @main.errorhandler(500)
@@ -60,14 +74,14 @@ def profile():
 	else:
 		return render_template('profile.html', name=user.first_name, business_name=business.name,
 	                       business_address=business.address, phone_number=business.phone_number,
-	                       services=services, business_email=business.email)
+	                       services=services, business_email=business.business_email)
 
 
 @main.route('/update_company', methods=['POST'])
 @login_required
 def update_company():
 	user = Users.query.filter_by(email=current_user.email).first()
-	business = Business.query.filter_by(owner=user.id).first()
+	business = Business.query.filter_by(owner_id=user.id).first()
 
 	name = request.form.get('business_name')
 	address = request.form.get('business_address')
@@ -88,7 +102,7 @@ def update_company():
 	else:
 		new_business = Business(owner_id=user.id, name=name,
 		                        address=address, phone_number=phone_number,
-		                        sector=services, business_email=email, description=description)
+		                        sector=sector, business_email=email, description=description)
 		db.session.add(new_business)
 		db.session.commit()
 

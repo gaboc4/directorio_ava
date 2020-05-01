@@ -13,31 +13,42 @@
 		<div class="col-lg-4">
 			<div class="card" style="background-color: #14595B !important; color: white !important;">
 				<div class="card-body">
-					<h3 class="card-title">Tu Empresa</h3>
+					<h3 class="card-title">Detalles de tu Compañia</h3>
 					<br>
 					<form method="POST" action="/update_company">
+						<label for="businessName">Empresa</label>
 						<div class="form-group">
-							<input class="form-control" type="text" name="business_name" value={{ business_name }}>
+
+							<input id="businessName" class="form-control" type="text" name="business_name"
+										 value="{{ business_name }}" required>
 						</div>
 						<div class="form-group">
-							<input class="form-control" type="text" name="business_address" value={{ business_address }}>
+							<label for="businessAddress">Direccion</label>
+							<input id="businessAddress" class="form-control" type="text" name="business_address"
+										 value="{{ business_address }}" required>
 						</div>
 						<div class="form-group">
-							<input class="form-control" type="text" name="phone_number" value={{ phone_number }}>
+							<label for="phoneNumber">Numero de Telefono</label>
+							<input id="phoneNumber" class="form-control" type="tel" name="phone_number"
+										 value="{{ phone_number }}" required>
 						</div>
 						<div class="form-group">
-							<input class="form-control" type="text" name="business_email" value={{ business_email }}>
+							<label for="businessEmail">Correo Electronico</label>
+							<input id="businessEmail" class="form-control" type="email" name="business_email"
+										 value="{{ business_email }}" required>
 						</div>
 						<div class="form-group">
-							<select class="form-control" name="business_sector">
-								<option selected value="">Area de Servicio</option>
+							<label for="businessSector">Area de Servicio</label>
+							<select id="businessSector" class="form-control" name="business_sector">
 								{% for service in services %}
 								<option value="{{service}}">{{service}}</option>
 								{% endfor %}
 							</select>
 						</div>
 						<div class="form-group">
-							<input class="form-control" type="text" name="business_description" value={{ business_description }}>
+							<label for="businessDescription">Descripcion</label>
+							<textarea id="businessDescription" class="form-control" name="business_description"
+												value="{{ business_description }}"></textarea>
 						</div>
 
 						<div class="form-group">

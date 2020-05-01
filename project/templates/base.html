@@ -37,34 +37,35 @@
 
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand" href="{{ url_for('main.index') }}">
+		<img src="{{ url_for('static', filename='logo_small.png') }}">
+	</a>
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+			<a href="{{ url_for('main.index') }}" class="nav-item nav-link">Listado</a>
 
-    <nav class="site-header sticky-top py-1">
-      <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a href="{{ url_for('main.index') }}">
-          <img src="{{ url_for('static', filename='logo.png') }}">
-        </a>
-        <a href="{{ url_for('main.index') }}" class="py-2 d-none d-md-inline-block">Listado</a>
+			{% if current_user.is_authenticated %}
+			<a href="{{ url_for('main.profile') }}" class="nav-item nav-link">Tu Empresa</a>
+			{% endif %}
 
-        {% if current_user.is_authenticated %}
-        <a href="{{ url_for('main.profile') }}" class="py-2 d-none d-md-inline-block">Tu Empresa</a>
-        {% endif %}
+			{% if not current_user.is_authenticated %}
 
-        {% if not current_user.is_authenticated %}
+			<a href="{{ url_for('auth.login') }}" class="nav-item nav-link">Iniciar sesion</a>
 
-        <a href="{{ url_for('auth.login') }}" class="py-2 d-none d-md-inline-block">Iniciar sesion</a>
+			<a href="{{ url_for('auth.signup') }}" class="nav-item nav-link">Crear cuenta</a>
 
-        <a href="{{ url_for('auth.signup') }}" class="py-2 d-none d-md-inline-block">Crear cuenta</a>
+			{% endif %}
+			{% if current_user.is_authenticated %}
 
-        {% endif %}
-        {% if current_user.is_authenticated %}
+			<a href="{{ url_for('auth.logout') }}" class="nav-item nav-link">Terminar sesion</a>
+			{% endif %}
+		</div>
+	</div>
+</nav>
 
-          <a href="{{ url_for('auth.logout') }}" class="py-2 d-none d-md-inline-block">Terminar sesion</a>
-        {% endif %}
-      </div>
-    </nav>
-
-    {% block content %}
-    {% endblock %}
+{% block content %}
+{% endblock %}
 
 </body>
 </html>
