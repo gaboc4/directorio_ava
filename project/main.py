@@ -9,7 +9,7 @@ from . import db
 
 main = Blueprint('main', __name__)
 
-services = ['Alquiler de vivienda', 'Compra de vivienda', 'Plomeria',
+services = ['Alquiler de vivienda', 'Compra de vivienda', 'Plomeria', 'Manicura', 'Seguro', 'Servicios Venezolanos', 'Comida',
             'Electricidad', 'Pintura', 'Reparaciones Generales', 'Pediatra', 'Medico General - Familiar',
             'Medico Natural', 'Dentista', 'Optometro', 'Clases de Ingles', 'Escuelas y Colegios', 'Escuelas Superiores',
             'Gimnasios', 'Baile', 'Restaurantes', 'Food Truck', 'Compra o Venta de Vehiculos', 'Reparacion Mecanica',

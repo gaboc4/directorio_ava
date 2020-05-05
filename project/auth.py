@@ -63,7 +63,6 @@ def signup_post():
 	first_name = request.form.get('first_name')
 	last_name = request.form.get('last_name')
 	password = request.form.get('password')
-	user_type = request.form.get('user_type')
 
 	user = Users.query.filter_by(email=email).first()
 
@@ -72,7 +71,8 @@ def signup_post():
 		return redirect(url_for('auth.signup'))
 
 	# create new user with the form data. Hash the password so plaintext version isn't saved.
-	new_user = Users(email=email, first_name=first_name, last_name=last_name,
+	max_id = max([x.id for x in Users.query.all()])
+	new_user = Users(id=max_id+1, email=email, first_name=first_name, last_name=last_name,
 	                 password=generate_password_hash(password, method='sha256'))
 
 	db.session.add(new_user)

@@ -9,7 +9,8 @@ class Users(UserMixin, db.Model):
     email = db.Column(db.String(1000), unique=True)
     password = db.Column(db.String(1000))
 
-    def __init__(self, first_name, last_name, email, password):
+    def __init__(self, id, first_name, last_name, email, password):
+        self.id = id
         self.first_name = first_name
         self.last_name = last_name
         self.email = email

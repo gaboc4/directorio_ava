@@ -2,6 +2,10 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 import os
+import socket
+
+
+curr_ip = socket.gethostbyname(socket.gethostname())
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
@@ -9,9 +13,13 @@ db = SQLAlchemy()
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://%s:%s@%s' % (
-	os.environ['DB_USER_HEROKU'], os.environ['DB_PASS_HEROKU'], os.environ['DB_URL_HEROKU'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+if curr_ip == '127.0.1.1':
+	app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://%s:%s@%s' % (
+		os.environ['DB_USER'], os.environ['DB_PASS'], 'localhost:3306/ava_servicios')
+else:
+	app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://%s:%s@%s' % (
+		os.environ['DB_USER_HEROKU'], os.environ['DB_PASS_HEROKU'], os.environ['DB_URL_HEROKU'])
 
 
 db.init_app(app)
