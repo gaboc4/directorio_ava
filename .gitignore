@@ -3,3 +3,8 @@ project/__pycache__
 .vscode
 .idea
 users.csv
+.viminfo
+.vim/sessions
+.vim
+project/creds.json
+
