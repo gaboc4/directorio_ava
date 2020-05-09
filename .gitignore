@@ -7,4 +7,5 @@ users.csv
 .vim/sessions
 .vim
 project/creds.json
+__pycache__
 
