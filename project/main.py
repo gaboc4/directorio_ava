@@ -3,8 +3,8 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_required, current_user
 
 import smtplib
-from .models import Users, Business
-from . import db
+from models import Users, Business
+from app import db
 
 main = Blueprint('main', __name__)
 
