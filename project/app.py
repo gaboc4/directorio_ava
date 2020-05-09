@@ -10,7 +10,13 @@ curr_ip = socket.gethostbyname(socket.gethostname())
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
 
-app = Flask(__name__)
+def create_app():
+	app = Flask(__name__)
+	return app
+
+app = create_app()
+
+
 if 'SECRET_KEY' in os.environ:
 	app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 	if curr_ip == '127.0.1.1':
