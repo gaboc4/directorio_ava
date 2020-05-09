@@ -8,11 +8,11 @@
 		<div class="col col-lg-4">
 <div class="card" style="background-color: #28256e !important; color:#fee600 !important;">
 	<div class="card-body">
-		<h5 class="card-title">Sign Up</h5>
+		<h5 class="card-title">Registrese</h5>
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}
 		<div class="alert alert-danger" role="alert">
-			Incorrect Email or Password
+			Contraseña o Correo Incorecto
 		</div>
 		{% endif %}
 		{% endwith %}
@@ -20,28 +20,28 @@
 		<form method="POST" action="/signup">
 			<div class="form-group">
 				<input class="form-control" type="text" name="first_name"
-							 placeholder="First Name" autofocus="" required>
+							 placeholder="Nombre" autofocus="" required>
 			</div>
 
 
 			<div class="form-group">
 				<input class="form-control" type="text" name="last_name"
-							 placeholder="Last Name" autofocus="" required>
+							 placeholder="Apellido" autofocus="" required>
 			</div>
 
 
 			<div class="form-group">
 				<input class="form-control" type="email" name="email"
-							 placeholder="Email" autofocus="" required>
+							 placeholder="Correo Electronico" autofocus="" required>
 			</div>
 
 
 			<div class="form-group">
 				<input class="form-control" type="password" name="password"
-							 placeholder="Password" required>
+							 placeholder="Contraseña" required>
 			</div>
 
-			<button class="btn btn-primary" style="margin-top: 10px;">Sign Up</button>
+			<button class="btn btn-primary" style="margin-top: 10px;">Registrar</button>
 		</form>
 	</div>
 </div>
