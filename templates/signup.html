@@ -4,8 +4,9 @@
 
 {% block content %}
 
-
-<div class="card login-width body-margin" style="background-color: #14595B !important; color: white !important;">
+<div class="row justify-content-md-center">
+		<div class="col col-lg-4">
+<div class="card" style="background-color: #28256e !important; color:#fee600 !important;">
 	<div class="card-body">
 		<h5 class="card-title">Sign Up</h5>
 		{% with messages = get_flashed_messages() %}
@@ -43,5 +44,7 @@
 			<button class="btn btn-primary" style="margin-top: 10px;">Sign Up</button>
 		</form>
 	</div>
+</div>
+</div>
 </div>
 {% endblock %}

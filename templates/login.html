@@ -4,8 +4,9 @@
 
 {% block content %}
 
-
-<div class="card login-width body-margin" style="background-color: #14595B !important; color: white !important;">
+<div class="row justify-content-md-center">
+		<div class="col col-lg-4">
+<div class="card" style="background-color: #28256e !important; color:#fee600 !important;">
 	{% with messages = get_flashed_messages() %}
 		{% if messages %}
 			{% if messages[0] == 'Password reset successfully!' %}
@@ -38,6 +39,8 @@
 			<a href="/reset_password"><button class="btn btn-primary" style="margin-top: 10px;">Reset</button></a>
 		</div>
 	</div>
+</div>
+</div>
 </div>
 
 {% endblock %}
