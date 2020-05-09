@@ -33,10 +33,7 @@ else:
 	
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-
-
-
-db.init_app(app)
+db.init_app(app)
 
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
@@ -60,3 +57,6 @@ app.register_blueprint(auth_blueprint)
 from main import main as main_blueprint
 
 app.register_blueprint(main_blueprint)
+
+if __name__ == '__main__':
+    app.run()
